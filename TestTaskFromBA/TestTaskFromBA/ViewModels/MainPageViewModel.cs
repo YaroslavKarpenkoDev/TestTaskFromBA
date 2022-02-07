@@ -41,7 +41,10 @@ namespace TestTaskFromBA.ViewModels
 				{
 					selectedImage = value;
 				}
-				NavigateToInfoPage();
+				if (value != null)
+				{
+					NavigateToInfoPage();
+				}				
 			}
 		}
 		#endregion
@@ -55,6 +58,10 @@ namespace TestTaskFromBA.ViewModels
 		public override void OnNavigatedTo(INavigationParameters parameters)
 		{
 			base.OnNavigatedTo(parameters);
+			if (SelectedImage != null)
+			{
+				SelectedImage = null;
+			}			
 			LoadData();
 		}
 		#endregion
@@ -93,8 +100,7 @@ namespace TestTaskFromBA.ViewModels
 			{
 				{"info", SelectedImage }
 			};
-			await NavigationService.NavigateAsync($"{nameof(ImageInfoPage)}", navigationParameters);
-
+			await NavigationService.NavigateAsync($"{nameof(ImageInfoPage)}", navigationParameters);			
 		}
 
 		public void Refresh()

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pinch="clr-namespace:Xamarin.Forms.PinchZoomImage;assembly=Xamarin.Forms.PinchZoomImage"
+             xmlns:resources="clr-namespace:TestTaskFromBA.Resources;assembly=TestTaskFromBA"
+             x:Class="TestTaskFromBA.Views.ImageInfoPage"
+             Title="{x:Static resources:Texts.Details}">
+    <ContentPage.Content>
+        <StackLayout
+            Padding="20">
+            <pinch:PinchZoom
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+                <pinch:PinchZoom.Content>
+                    <Image
+                        Aspect="AspectFit"
+                        Source="{Binding ImageUrl}" />
+                </pinch:PinchZoom.Content>
+            </pinch:PinchZoom>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

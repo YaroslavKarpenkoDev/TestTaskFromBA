@@ -11,7 +11,6 @@ namespace TestTaskFromBA.Services
 	public class RESTAPIService : IRESTAPIService
 	{
 		private HttpClient _httpClient;
-		private HttpResponseMessage result;
 
 		public HttpResponseMessage Result { get; set; }
 

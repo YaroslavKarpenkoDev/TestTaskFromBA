@@ -1,12 +1,7 @@
-﻿using Newtonsoft.Json;
-using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Navigation;
+﻿using Prism.Navigation;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TestTaskFromBA.AuxiliaryAdditions;
@@ -39,14 +34,14 @@ namespace TestTaskFromBA.ViewModels
 			}
 			set
 			{
-				if(selectedImage != value)
+				if (selectedImage != value)
 				{
 					selectedImage = value;
 				}
 				if (value != null)
 				{
 					NavigateToInfoPage();
-				}				
+				}
 			}
 		}
 		#endregion
@@ -63,7 +58,7 @@ namespace TestTaskFromBA.ViewModels
 			if (SelectedImage != null)
 			{
 				SelectedImage = null;
-			}			
+			}
 			await LoadData();
 		}
 		#endregion
@@ -102,7 +97,7 @@ namespace TestTaskFromBA.ViewModels
 			{
 				{"info", SelectedImage }
 			};
-			await NavigationService.NavigateAsync($"{nameof(ImageInfoPage)}", navigationParameters);			
+			await NavigationService.NavigateAsync($"{nameof(ImageInfoPage)}", navigationParameters);
 		}
 
 		public async void Refresh()
@@ -117,7 +112,7 @@ namespace TestTaskFromBA.ViewModels
 		{
 			ResponseModel = new List<ImageResponseModel>();
 			AppData.ImagesList = string.Empty;
-			IsButtonActive = false;			
+			IsButtonActive = false;
 		}
 		#endregion
 	}

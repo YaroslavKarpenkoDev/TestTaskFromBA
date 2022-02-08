@@ -39,6 +39,9 @@
             Text="{x:Static resources:Texts.ClearAll}"
             IsEnabled="{Binding IsButtonActive}"
             Command="{Binding ClearSavedDataCommand}"
+            BackgroundColor="DeepSkyBlue"
+            TextColor="Black"
+            Padding="5"
             VerticalOptions="EndAndExpand"
             HorizontalOptions="CenterAndExpand"/>
     </Grid>

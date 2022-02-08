@@ -1,9 +1,5 @@
 ﻿using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using TestTaskFromBA.Models;
-using TestTaskFromBA.Resources;
 
 namespace TestTaskFromBA.ViewModels
 {

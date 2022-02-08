@@ -1,5 +1,6 @@
 using Prism;
 using Prism.Ioc;
+using TestTaskFromBA.Services;
 using TestTaskFromBA.ViewModels;
 using TestTaskFromBA.Views;
 using Xamarin.Essentials.Implementation;
@@ -25,6 +26,8 @@ namespace TestTaskFromBA
 		protected override void RegisterTypes(IContainerRegistry containerRegistry)
 		{
 			containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
+			containerRegistry.RegisterSingleton<IRESTAPIService, RESTAPIService>();
+			containerRegistry.RegisterSingleton<IStorageService, StorageService>();
 
 			containerRegistry.RegisterForNavigation<NavigationPage>();
 			containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();

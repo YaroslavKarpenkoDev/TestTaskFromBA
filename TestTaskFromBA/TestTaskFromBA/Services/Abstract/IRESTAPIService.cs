@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace TestTaskFromBA.Services
 {
-	public interface IRESTAPIServise
+	public interface IRESTAPIService
 	{
-		Task<ResponseModel> GetRequest<ResponseModel>(ResponseModel response, string endPoint);
+		Task<ResponseModel> GetRequest<ResponseModel>( string endPoint);
 	}
 }

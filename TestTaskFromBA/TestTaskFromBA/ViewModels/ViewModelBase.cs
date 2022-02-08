@@ -12,17 +12,20 @@ namespace TestTaskFromBA.ViewModels
 	{
 		protected INavigationService NavigationService { get; private set; }
 
-		protected IRESTAPIServise Rest { get; private set; }
+		protected IRESTAPIService Rest { get; private set; }
 
 		protected IStorageService Storage { get; private set; }
 
 		public ViewModelBase(INavigationService navigationService)
 		{
 			NavigationService = navigationService;
-			Rest = new RESTAPIService();
-			Storage = new StorageService();
 		}
-
+		public ViewModelBase(INavigationService navigationService, IRESTAPIService restService, IStorageService storageService)
+		{
+			NavigationService = navigationService;
+			Rest = restService;
+			Storage = storageService;
+		}
 		public virtual void Initialize(INavigationParameters parameters)
 		{
 

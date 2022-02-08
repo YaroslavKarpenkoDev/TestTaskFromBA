@@ -13,7 +13,6 @@ namespace TestTaskFromBA.ViewModels
 		{
 		}
 		#region Properties&Fields
-		public string Information { get; set; }
 		public string ImageUrl { get; set; }
 		#endregion
 		#region Lifecycle
@@ -24,18 +23,6 @@ namespace TestTaskFromBA.ViewModels
 			if (info != null)
 			{
 				ImageUrl = info.urls.small;
-			}
-		}
-
-		public string ParametersValidation(string value)
-		{
-			if (value != null)
-			{
-				return value;
-			}
-			else
-			{
-				return Texts.MessageOfAbsent;
 			}
 		}
 		#endregion

@@ -7,9 +7,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using TestTaskFromBA.AuxiliaryAdditions;
 using TestTaskFromBA.Models;
+using TestTaskFromBA.Services;
 using TestTaskFromBA.Views;
 using Xamarin.Forms;
 
@@ -17,8 +19,8 @@ namespace TestTaskFromBA.ViewModels
 {
 	public class MainPageViewModel : ViewModelBase
 	{
-		public MainPageViewModel(INavigationService navigationService)
-			: base(navigationService)
+		public MainPageViewModel(INavigationService navigationService, IRESTAPIService restService, IStorageService storageService)
+			: base(navigationService, restService, storageService)
 		{
 			ResponseModel = new List<ImageResponseModel>();
 		}
@@ -55,25 +57,25 @@ namespace TestTaskFromBA.ViewModels
 		#endregion
 
 		#region Lifecycle
-		public override void OnNavigatedTo(INavigationParameters parameters)
+		public override async void OnNavigatedTo(INavigationParameters parameters)
 		{
 			base.OnNavigatedTo(parameters);
 			if (SelectedImage != null)
 			{
 				SelectedImage = null;
 			}			
-			LoadData();
+			await LoadData();
 		}
 		#endregion
 
 		#region Methods
-		public async void LoadData()
+		public async Task LoadData()
 		{
 			try
 			{
 				if (AppData.FirstStart || string.IsNullOrWhiteSpace(AppData.ImagesList))
 				{
-					var response = await Rest.GetRequest(ResponseModel, Endpoints.GetRandomImage);
+					var response = await Rest.GetRequest<List<ImageResponseModel>>(Endpoints.GetRandomImage);
 					if (response != null)
 					{
 						AppData.ImagesList = Storage.SavingData(response);
@@ -103,11 +105,11 @@ namespace TestTaskFromBA.ViewModels
 			await NavigationService.NavigateAsync($"{nameof(ImageInfoPage)}", navigationParameters);			
 		}
 
-		public void Refresh()
+		public async void Refresh()
 		{
 
 			IsRefreshing = true;
-			LoadData();
+			await LoadData();
 			IsRefreshing = false;
 		}
 
